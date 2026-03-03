@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xzyo Store | Lobby</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">XZYO <span>STORE</span></div>
+            
+            <button class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="#">HOME</a></li>
+                <li><a href="https://cek-transaksi-kamu.vercel.app">CEK TRANSAKSI</a></li>
+                <li><a href="https://wa.me/nomorkamu" class="btn-chat">CHAT ADMIN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="slider-container">
+        <div class="slider">
+            <div class="slides">
+                <img src="https://via.placeholder.com/1000x400/0044ff/ffffff?text=Promo+1" alt="Promo 1">
+                <img src="https://via.placeholder.com/1000x400/002288/ffffff?text=Promo+2" alt="Promo 2">
+                <img src="https://via.placeholder.com/1000x400/0066ff/ffffff?text=Promo+3" alt="Promo 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="game-section">
+        <h2>LAYANAN Xzyo STORE</h2>
+        <div class="game-grid">
+            <a href="https://joki-blox-fruit.vercel.app" class="game-card">
+                <div class="img-box">
+                    <img src="https://via.placeholder.com/300" alt="Joki Blox Fruit">
+                </div>
+                <h3>JOKI BLOX FRUIT</h3>
+            </a>
+
+            <a href="https://gamepas-blox-fruit.vercel.app" class="game-card">
+                <div class="img-box">
+                    <img src="https://via.placeholder.com/300" alt="Gamepass">
+                </div>
+                <h3>GAMEPASS BLOX FRUIT</h3>
+            </a>
+
+            <a href="https://fruit-blox-fruit.vercel.app" class="game-card">
+                <div class="img-box">
+                    <img src="https://via.placeholder.com/300" alt="Fruit">
+                </div>
+                <h3>FRUIT BLOX FRUIT</h3>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Script buat buka tutup menu garis 3
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('is-active');
+        });
+    </script>
+</body>
+</html>
