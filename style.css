@@ -1,198 +1,429 @@
-/* --- GLOBAL RESET & VAR --- */
-:root {
-    --primary-blue: #0066ff;
-    --dark-blue: #0044cc;
-    --light-blue: #e6f0ff;
-    --glass: rgba(255, 255, 255, 0.8);
-    --bg: #f4f7fe;
-    --text: #2d3436;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
+    background-color: #000000; /* Hitam Pekat */
+    color: white;
 }
 
-/* --- NAVBAR (CLEAN & FLOATING) --- */
+/* NAVBAR */
 .navbar {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
+    background-color: #0a0a0a;
     padding: 15px 5%;
+    border-bottom: 1px solid #1a1a1a;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0, 102, 255, 0.1);
+    z-index: 100;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-blue);
-    letter-spacing: 1px;
+.store-logo img {
+    height: 40px; /* Atur tinggi logo/animasi kamu */
+    object-fit: contain;
 }
 
-.logo span { color: var(--text); }
-
-.nav-links {
+.nav-right {
     display: flex;
-    list-style: none;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    background: #111;
+    border: 1px solid #222;
+    padding: 5px 12px;
+    border-radius: 6px;
+    display: flex;
     align-items: center;
 }
 
-.nav-links li a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 600;
-    margin: 0 15px;
-    font-size: 0.9rem;
-    transition: 0.3s;
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100px;
 }
 
-.nav-links li a:hover { color: var(--primary-blue); }
-
-.btn-chat {
-    background: var(--primary-blue);
-    color: white !important;
-    padding: 8px 20px;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+.hamburger {
+    background: none;
+    border: none;
+    color: #3b82f6; /* Warna biru */
+    font-size: 24px;
+    cursor: pointer;
 }
 
-/* --- SLIDER (MODERN BORDER) --- */
-.slider-container {
-    padding: 20px 5%;
+/* BANNER LAYERS */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
-.slider {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.slides {
-    display: flex;
-    width: 100%;
-    /* Tambahkan animasi slider di sini jika mau auto-slide */
-}
-
-.slides img {
-    width: 100%;
-    object-fit: cover;
-}
-
-/* --- GAME SECTION --- */
-.game-section {
-    padding: 40px 5%;
-}
-
-.game-section h2 {
-    text-align: left;
-    margin-bottom: 25px;
-    font-size: 1.2rem;
-    color: var(--primary-blue);
-    border-left: 5px solid var(--primary-blue);
-    padding-left: 15px;
-    /* Animasi Nama Store */
-    animation: slideIn 1s ease-out;
-}
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* --- GRID SYSTEM (DESKTOP & MOBILE) --- */
-.game-grid {
+.banner-grid {
     display: grid;
-    gap: 20px;
-    /* Desktop: 3 Kolom */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
-/* KARTU TOKO (STYLING SIP SHOP) */
-.game-card {
-    background: white;
-    border-radius: 15px;
-    padding: 15px;
-    text-decoration: none;
-    color: var(--text);
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.img-box {
-    width: 100%;
+.banner-box {
+    height: 180px;
+    background: #0d0d0d;
+    border: 1px dashed #333;
     border-radius: 12px;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+}
+
+/* CATEGORY & OPTIONS */
+.category-section {
+    margin-bottom: 30px;
+}
+
+.category-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #3b82f6;
     margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
-.img-box img {
-    width: 100%;
-    transition: 0.5s;
+.options-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-.game-card h3 {
-    font-size: 1rem;
+.options-row.single {
+    grid-template-columns: 1fr;
+}
+
+/* OPSI CARD DENGAN STROKE BIRU */
+.option-card {
+    background: #0d0d0d;
+    border: 2px solid #1a1a1a; /* Stroke awal gelap */
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+/* Efek saat diklik/hover */
+.option-card:hover, .option-card:active {
+    border-color: #3b82f6; /* Stroke Biru */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.img-placeholder, .img-1x1 {
+    width: 40px;
+    height: 40px;
+    background: #1a1a1a;
+    border-radius: 6px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    object-fit: cover; /* Tambahkan ini agar gambar tidak gepeng */
+}
+
+.option-card span {
+    font-size: 13px;
     font-weight: 700;
 }
 
-.game-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
-    border-color: var(--primary-blue);
-}
-
-.game-card:hover img {
-    transform: scale(1.1);
-}
-
-/* --- RESPONSIVE MOBILE (HP) --- */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Sembunyikan menu buat JS toggle */
-    }
-
-    .game-grid {
-        /* HP: Jadi 2 Kolom biar lebih estetik, atau 1 kolom */
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 15px;
-    }
-
-    .game-card {
-        padding: 10px;
-    }
-
-    .game-card h3 {
-        font-size: 0.8rem;
-    }
-
-    .slider-container {
-        padding: 10px 3%;
-    }
-}
-
-/* Menu Toggle Animation (Garis 3) */
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: var(--primary-blue);
-    margin: 5px;
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: #000;
+    border-left: 1px solid #1a1a1a;
+    z-index: 1000;
     transition: 0.3s;
+    padding: 40px 20px;
+}
+
+.sidebar.active { right: 0; }
+
+.sidebar-content a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#closeBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+/* --- PENGATURAN GRID (DEFAULT HP) --- */
+.options-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* HP: 2 Kolom */
+    gap: 10px;
+}
+
+/* Bagian Roblox sekarang disamakan saja, tidak perlu class .single lagi */
+.options-row.single {
+    grid-template-columns: repeat(2, 1fr); 
+}
+
+/* RESPONSIVE DESKTOP */
+@media (min-width: 769px) {
+    .hamburger { display: none; }
+    
+    .menu-desktop {
+        display: flex;
+        gap: 25px;
+    }
+
+    .menu-desktop a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .menu-desktop a:hover { color: #3b82f6; }
+
+    .search-bar { width: 250px; }
+    .search-bar input { width: 100%; }
+
+    /* Desktop: Berubah jadi 3 Kolom */
+    .options-row, .options-row.single {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 768px) {
+    .menu-desktop { display: none; }
+    
+    /* Memastikan di HP tetap 2 kolom */
+    .options-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+body {
+    background-color: #000000; /* Hitam Pekat */
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #0a0a0a;
+    padding: 15px 5%;
+    border-bottom: 1px solid #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.store-logo img {
+    height: 40px; /* Atur tinggi logo/animasi kamu */
+    object-fit: contain;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    background: #111;
+    border: 1px solid #222;
+    padding: 5px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100px;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: #3b82f6; /* Warna biru */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* BANNER LAYERS */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.banner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.banner-box {
+    height: 180px;
+    background: #0d0d0d;
+    border: 1px dashed #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+}
+
+/* CATEGORY & OPTIONS */
+.category-section {
+    margin-bottom: 30px;
+}
+
+.category-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #3b82f6;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.options-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.options-row.single {
+    grid-template-columns: 1fr;
+}
+
+/* OPSI CARD DENGAN STROKE BIRU */
+.option-card {
+    background: #0d0d0d;
+    border: 2px solid #1a1a1a; /* Stroke awal gelap */
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+/* Efek saat diklik/hover */
+.option-card:hover, .option-card:active {
+    border-color: #3b82f6; /* Stroke Biru */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.img-placeholder {
+    width: 40px;
+    height: 40px; /* Ukuran 1x1 sesuai permintaan */
+    background: #1a1a1a;
+    border-radius: 6px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.option-card span {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: #000;
+    border-left: 1px solid #1a1a1a;
+    z-index: 1000;
+    transition: 0.3s;
+    padding: 40px 20px;
+}
+
+.sidebar.active { right: 0; }
+
+.sidebar-content a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#closeBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+/* RESPONSIVE DESKTOP */
+@media (min-width: 769px) {
+    .hamburger { display: none; }
+    
+    .menu-desktop {
+        display: flex;
+        gap: 25px;
+    }
+
+    .menu-desktop a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .menu-desktop a:hover { color: #3b82f6; }
+
+    .search-bar { width: 250px; }
+    .search-bar input { width: 100%; }
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 768px) {
+    .menu-desktop { display: none; }
 }
