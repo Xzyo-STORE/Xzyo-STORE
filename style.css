@@ -1,23 +1,35 @@
+/* --- GLOBAL RESET & VAR --- */
+:root {
+    --primary-blue: #0066ff;
+    --dark-blue: #0044cc;
+    --light-blue: #e6f0ff;
+    --glass: rgba(255, 255, 255, 0.8);
+    --bg: #f4f7fe;
+    --text: #2d3436;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #0a0a0a; /* Hitam biar birunya nyala */
-    color: white;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* --- NAVBAR (CLEAN & FLOATING) --- */
 .navbar {
-    background: #001a4d;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
     padding: 15px 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 2px solid #0044ff;
+    box-shadow: 0 2px 15px rgba(0, 102, 255, 0.1);
 }
 
 .nav-container {
@@ -27,131 +39,160 @@ body {
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    letter-spacing: 1px;
 }
 
-.logo span {
-    color: #0044ff;
-}
+.logo span { color: var(--text); }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px;
+    align-items: center;
 }
 
-.nav-links a {
+.nav-links li a {
     text-decoration: none;
-    color: white;
+    color: var(--text);
     font-weight: 600;
+    margin: 0 15px;
+    font-size: 0.9rem;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #0044ff;
-    text-shadow: 0 0 10px #0044ff;
+.nav-links li a:hover { color: var(--primary-blue); }
+
+.btn-chat {
+    background: var(--primary-blue);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
 }
 
-/* SLIDER */
+/* --- SLIDER (MODERN BORDER) --- */
 .slider-container {
-    width: 100%;
+    padding: 20px 5%;
+}
+
+.slider {
+    border-radius: 20px;
     overflow: hidden;
-    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .slides {
     display: flex;
-    width: 300%;
-    animation: slide 10s infinite;
+    width: 100%;
+    /* Tambahkan animasi slider di sini jika mau auto-slide */
 }
 
 .slides img {
     width: 100%;
-    border-radius: 10px;
+    object-fit: cover;
 }
 
-@keyframes slide {
-    0% { transform: translateX(0); }
-    33% { transform: translateX(-100%); }
-    66% { transform: translateX(-200%); }
-    100% { transform: translateX(0); }
-}
-
-/* GAME GRID */
+/* --- GAME SECTION --- */
 .game-section {
     padding: 40px 5%;
-    text-align: center;
 }
 
+.game-section h2 {
+    text-align: left;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    border-left: 5px solid var(--primary-blue);
+    padding-left: 15px;
+    /* Animasi Nama Store */
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- GRID SYSTEM (DESKTOP & MOBILE) --- */
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
+    gap: 20px;
+    /* Desktop: 3 Kolom */
+    grid-template-columns: repeat(3, 1fr);
 }
 
+/* KARTU TOKO (STYLING SIP SHOP) */
 .game-card {
-    background: #111;
+    background: white;
     border-radius: 15px;
     padding: 15px;
     text-decoration: none;
-    color: white;
-    border: 2px solid #0044ff; /* Stroke Biru */
-    transition: 0.4s;
-    box-shadow: 0 0 15px rgba(0, 68, 255, 0.2);
+    color: var(--text);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.game-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 30px rgba(0, 68, 255, 0.6);
-    background: #001a4d;
+.img-box {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .img-box img {
     width: 100%;
-    border-radius: 10px;
+    transition: 0.5s;
 }
 
 .game-card h3 {
-    margin-top: 15px;
-    font-size: 18px;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
-/* RESPONSIVE MOBILE (GARIS 3) */
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
+    border-color: var(--primary-blue);
+}
+
+.game-card:hover img {
+    transform: scale(1.1);
+}
+
+/* --- RESPONSIVE MOBILE (HP) --- */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    .menu-toggle span {
-        display: block;
-        width: 30px;
-        height: 3px;
-        background: white;
-        transition: 0.3s;
-    }
-
     .nav-links {
-        display: none; /* Sembunyiin menu biasa */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 5%;
-        background: #001a4d;
-        width: 200px;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #0044ff;
+        display: none; /* Sembunyikan menu buat JS toggle */
     }
 
-    .nav-links.active {
-        display: flex; /* Muncul pas dipencet */
+    .game-grid {
+        /* HP: Jadi 2 Kolom biar lebih estetik, atau 1 kolom */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
     }
+
+    .game-card {
+        padding: 10px;
+    }
+
+    .game-card h3 {
+        font-size: 0.8rem;
+    }
+
+    .slider-container {
+        padding: 10px 3%;
+    }
+}
+
+/* Menu Toggle Animation (Garis 3) */
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--primary-blue);
+    margin: 5px;
+    transition: 0.3s;
 }
